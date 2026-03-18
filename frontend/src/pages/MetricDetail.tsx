@@ -143,9 +143,9 @@ const MetricDetail = () => {
 
       {/* Risk Forecast */}
       <div className={`rounded-xl border p-6 shadow-sm ${
-        info.status === 'critical' ? 'bg-critical/5 border-critical/20' :
-        info.status === 'warning' ? 'bg-warning/5 border-warning/20' :
-        'bg-safe/5 border-safe/20'
+        info.status === 'critical' ? 'bg-critical/10 border-critical/30 dark:bg-critical/8 dark:border-critical/30' :
+        info.status === 'warning' ? 'bg-warning/10 border-warning/30 dark:bg-warning/8 dark:border-warning/30' :
+        'bg-safe/10 border-safe/30 dark:bg-safe/8 dark:border-safe/30'
       }`}>
         <h3 className="mb-2 text-sm font-semibold text-card-foreground">🔮 Risk Forecast</h3>
         <p className="text-sm leading-relaxed text-muted-foreground">

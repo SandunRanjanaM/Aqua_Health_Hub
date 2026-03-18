@@ -4,6 +4,7 @@ import CircularGauge from './CircularGauge';
 import { type Tank } from '@/data/dummyData';
 import { useTanks } from '@/context/TanksContext';
 import { toast } from 'sonner';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import {
   AlertDialog,
   AlertDialogAction,
@@ -17,15 +18,15 @@ import {
 } from '@/components/ui/alert-dialog';
 
 const statusBorder: Record<string, string> = {
-  safe: 'border-safe/50 hover:border-safe',
-  warning: 'border-warning/50 hover:border-warning',
-  critical: 'border-critical/50 hover:border-critical',
+  safe: 'border-safe/60 hover:border-safe dark:border-safe/60',
+  warning: 'border-warning/60 hover:border-warning dark:border-warning/60',
+  critical: 'border-critical/60 hover:border-critical dark:border-critical/60',
 };
 
 const statusBadge: Record<string, string> = {
-  safe: 'bg-safe/10 text-safe',
-  warning: 'bg-warning/10 text-warning',
-  critical: 'bg-critical/10 text-critical',
+  safe: 'bg-safe/20 text-safe dark:bg-safe/15',
+  warning: 'bg-warning/20 text-warning dark:bg-warning/15',
+  critical: 'bg-critical/20 text-critical dark:bg-critical/15',
 };
 
 const TankCard = ({ tank }: { tank: Tank }) => {
@@ -80,7 +81,34 @@ const TankCard = ({ tank }: { tank: Tank }) => {
         </span>
       </div>
       <div className="relative">
-        <CircularGauge value={tank.stressScore} status={tank.status} showLabel />
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div
+              className="inline-flex rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              role="button"
+              tabIndex={0}
+              aria-label="What does the stress score mean?"
+              onClick={(e) => e.stopPropagation()}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                }
+              }}
+            >
+              <CircularGauge value={tank.stressScore} status={tank.status} showLabel />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side="top" className="max-w-[260px]">
+            <div className="space-y-1">
+              <p className="text-xs font-semibold">Stress Score</p>
+              <p className="text-xs text-muted-foreground">
+                A simple 0–100 estimate of fish stress risk from recent readings. Lower is better.
+              </p>
+              <p className="text-xs text-muted-foreground">LOW = Safe • MEDIUM = Watch • HIGH = Act now</p>
+            </div>
+          </TooltipContent>
+        </Tooltip>
       </div>
       <p className="text-xs text-muted-foreground text-center">{tank.insight}</p>
     </div>

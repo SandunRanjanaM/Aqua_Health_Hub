@@ -9,8 +9,8 @@ const AlertBanner = () => {
     <div
       className={`flex items-center gap-3 rounded-lg px-5 py-3.5 text-sm font-medium animate-fade-in ${
         isCritical
-          ? 'bg-critical/10 text-critical border border-critical/20'
-          : 'bg-safe/10 text-safe border border-safe/20'
+          ? 'bg-critical/20 text-critical border border-critical/30 dark:bg-critical/15 dark:border-critical/30'
+          : 'bg-safe/20 text-safe border border-safe/30 dark:bg-safe/15 dark:border-safe/30'
       }`}
     >
       {isCritical ? (

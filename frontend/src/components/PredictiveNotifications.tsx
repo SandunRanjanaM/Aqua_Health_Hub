@@ -9,9 +9,9 @@ const severityIcon: Record<TankStatus, React.ElementType> = {
 };
 
 const severityStyle: Record<TankStatus, string> = {
-  critical: 'border-l-critical bg-critical/5',
-  warning: 'border-l-warning bg-warning/5',
-  safe: 'border-l-safe bg-safe/5',
+  critical: 'border-l-critical bg-critical/10 dark:bg-critical/8',
+  warning: 'border-l-warning bg-warning/10 dark:bg-warning/8',
+  safe: 'border-l-safe bg-safe/10 dark:bg-safe/8',
 };
 
 const severityOrder: Record<TankStatus, number> = { critical: 0, warning: 1, safe: 2 };

@@ -11,9 +11,9 @@ interface CircularGaugeProps {
 }
 
 const statusColors: Record<TankStatus, string> = {
-  safe: 'hsl(152, 60%, 42%)',
-  warning: 'hsl(38, 92%, 50%)',
-  critical: 'hsl(0, 72%, 55%)',
+  safe: 'hsl(var(--chart-safe))',
+  warning: 'hsl(var(--chart-warning))',
+  critical: 'hsl(var(--chart-critical))',
 };
 
 const statusLabels: Record<TankStatus, string> = {

@@ -42,7 +42,7 @@ const AppSidebar = ({ open, onClose }: AppSidebarProps) => {
     <>
       {/* Overlay for mobile */}
       {open && (
-        <div className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-sm lg:hidden" onClick={onClose} />
+        <div className="fixed inset-0 z-40 bg-overlay/40 backdrop-blur-sm lg:hidden" onClick={onClose} />
       )}
 
       <aside
@@ -97,9 +97,9 @@ const AppSidebar = ({ open, onClose }: AppSidebarProps) => {
                 <span>{tank.name}</span>
               </div>
               <span className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${
-                tank.status === 'critical' ? 'bg-critical/10 text-critical' :
-                tank.status === 'warning' ? 'bg-warning/10 text-warning' :
-                'bg-safe/10 text-safe'
+                tank.status === 'critical' ? 'bg-critical/20 text-critical dark:bg-critical/15' :
+                tank.status === 'warning' ? 'bg-warning/20 text-warning dark:bg-warning/15' :
+                'bg-safe/20 text-safe dark:bg-safe/15'
               }`}>
                 {tank.stressScore}
               </span>
